@@ -1,0 +1,29 @@
+{
+    "name": "floorbot-music",
+    "version": "1.0.0",
+    "description": "The music component of floorbot",
+    "main": "app.js",
+    "scripts": {
+        "test": "nodemon --ignore \"*.json\" app.js",
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/floorbot-js/floorbot-music.git"
+    },
+    "author": "Arcadeena",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/floorbot-js/floorbot-music/issues"
+    },
+    "homepage": "https://github.com/floorbot-js/floorbot-music#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    },
+    "dependencies": {
+        "discord.js": "git://github.com/floorbot-js/discord.js.git#interactions",
+        "discord.js-commands": "git://github.com/floorbot-js/discord.js-commands",
+        "@discordjs/opus": "^0.4.0",
+        "dotenv": "^8.2.0"
+    }
+}
