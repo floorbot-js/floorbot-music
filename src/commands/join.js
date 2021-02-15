@@ -9,7 +9,7 @@ module.exports = class extends Command {
                 description: 'Join a voice channel',
                 options: [{
                     type: 'CHANNEL',
-                    name: 'channel',
+                    name: 'voice_channel',
                     required: false,
                     description: 'Join a specific channel'
                 }]
