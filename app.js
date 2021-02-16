@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const Discord = require('discord.js-commands')(require('discord.js'));
+Discord.Guild = require('./lib/AudioGuild')(Discord);
 
 const client = new Discord.Client({
     token: process.env.DiscordToken,
@@ -11,6 +12,7 @@ client.once('ready', () => {
     client.registerCommand([
         new(require('./src/commands/join'))(client),
         new(require('./src/commands/leave'))(client),
+        new(require('./src/commands/queue'))(client),
     ], false);
 });
 
