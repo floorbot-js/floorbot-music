@@ -11,10 +11,13 @@ The music component of floorbot
 /queue [url] (shuffle)    # Queue a song/playlist from a url
                               # [url] The media url to add to the queue
                               # (shuffle) decides if a queued playlist should be shuffled
+/next [url] (shuffle)     # The same as queue except the song(s) play next
+                              # [url] The media url to add to next in queue
+                              # (shuffle) decides if a queued playlist should be shuffled
+/skip (count)             # Skip the current or next specified song count
+                              # (count) The number of tracks to skip
 
 ### TODO ##
-/next (url)               # The same as queue except the song(s) play next
-/skip (count)             # Skip the current or next specified song count
 /shuffle                  # Shuffle the playlist (excluding current song)
 /list                     # Display the current song queue list
 /volume (level)           # Set or reset the volume of the audio

@@ -14,6 +14,7 @@ client.once('ready', () => {
         new(require('./src/commands/leave'))(client),
         new(require('./src/commands/queue'))(client),
         new(require('./src/commands/skip'))(client),
+        new(require('./src/commands/next'))(client),
     ], false);
 });
 
