@@ -20,4 +20,6 @@ The music component of floorbot
 /volume (level)           # Set or reset the volume of the audio
 /pause                    # Pause the current track
 /resume                   # Resume the current track
+/current                  # Display the current track
+/clear                    # Clear the current queue
 ```
