@@ -13,6 +13,7 @@ client.once('ready', () => {
         new(require('./src/commands/join'))(client),
         new(require('./src/commands/leave'))(client),
         new(require('./src/commands/queue'))(client),
+        new(require('./src/commands/skip'))(client),
     ], false);
 });
 
