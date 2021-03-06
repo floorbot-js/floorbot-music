@@ -20,3 +20,23 @@ client.once('ready', () => {
 
 client.on('ready', () => console.log(`Logged in as ${client.user.tag}!`));
 client.login(process.env.DiscordToken);
+
+
+// const AudioTrack = require('./lib/AudioTrack');
+// AudioTrack.generate('https://www.youtube.com/playlist?list=PLVtIFuYG6eXzQjrFaD-IfMSE0uTFDIgJ-').then(console.log) // YT Playlist
+// AudioTrack.generate('https://www.youtube.com/watch?v=SLNsPqIdiGk').then(console.log) // YT Song
+// AudioTrack.generate('https://soundcloud.com/MauiOfficial69/likes').then(console.log) // Ben playlist
+// AudioTrack.generate('https://www.twitch.tv/japan_asmr').then(console.log) // Twtich stream LIVE
+// AudioTrack.generate('https://www.twitch.tv/arcadeena').then(console.log).catch(console.log) // Twtich stream NOT LIVE
+
+
+/**
+
+
+https://www.youtube.com/watch?v=SLNsPqIdiGk
+
+TUTURU:
+
+https://www.youtube.com/watch?v=HkGNeN0LGOE
+
+**/
