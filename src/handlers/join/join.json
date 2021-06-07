@@ -1,0 +1,10 @@
+{
+    "name": "join",
+    "description": "Join a voice channel",
+    "options": [{
+        "type": "CHANNEL",
+        "name": "voice_channel",
+        "required": false,
+        "description": "Join a specific channel"
+    }]
+}

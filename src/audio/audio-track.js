@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
-const YoutubeDL = require('./YoutubeDL');
+const YoutubeDL = require('./youtube-dl');
 
-class AudioTrack {
+module.exports = class AudioTrack {
 
     constructor(metadata) {
         this.metadata = metadata;
@@ -35,5 +35,3 @@ class AudioTrack {
         });
     }
 }
-
-module.exports = AudioTrack;

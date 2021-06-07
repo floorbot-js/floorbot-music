@@ -1,0 +1,10 @@
+{
+    "name": "skip",
+    "description": "Skip the current track(s)",
+    "options": [{
+        "type": "INTEGER",
+        "name": "count",
+        "required": false,
+        "description": "How many tracks to skip"
+    }]
+}

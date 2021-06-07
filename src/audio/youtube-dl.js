@@ -39,6 +39,4 @@ class YoutubeDL {
     }
 }
 
-
-
 module.exports = YoutubeDL;

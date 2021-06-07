@@ -1,0 +1,50 @@
+{
+    "name": "play",
+    "description": "Play audio tracks and playlists from urls",
+    "options": [{
+        "type": "SUB_COMMAND",
+        "name": "now",
+        "description": "Add tracks to start of queue and play immediately",
+        "options": [{
+            "type": "STRING",
+            "name": "url",
+            "required": true,
+            "description": "A media link or playlist to queue"
+        }, {
+            "type": "BOOLEAN",
+            "name": "shuffle",
+            "required": false,
+            "description": "(default true) Should the linked media playlist be shuffled before queued"
+        }]
+    }, {
+        "type": "SUB_COMMAND",
+        "name": "queue",
+        "description": "Add tracks to the end of queue",
+        "options": [{
+            "type": "STRING",
+            "name": "url",
+            "required": true,
+            "description": "A media link or playlist to queue"
+        }, {
+            "type": "BOOLEAN",
+            "name": "shuffle",
+            "required": false,
+            "description": "(default true) Should the linked media playlist be shuffled before queued"
+        }]
+    }, {
+        "type": "SUB_COMMAND",
+        "name": "next",
+        "description": "Add tracks to next in queue",
+        "options": [{
+            "type": "STRING",
+            "name": "url",
+            "required": true,
+            "description": "A media link or playlist to queue"
+        }, {
+            "type": "BOOLEAN",
+            "name": "shuffle",
+            "required": false,
+            "description": "(default true) Should the linked media playlist be shuffled before queued"
+        }]
+    }]
+}

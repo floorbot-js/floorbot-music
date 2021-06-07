@@ -1,4 +1,4 @@
-const AudioPlayer = require('./AudioPlayer');
+const AudioPlayer = require('../audio/audio-player');
 
 module.exports = Discord => {
     const { Structures } = Discord;

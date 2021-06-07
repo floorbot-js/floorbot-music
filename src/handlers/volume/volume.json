@@ -1,0 +1,10 @@
+{
+    "name": "volume",
+    "description": "Set the audio output volume",
+    "options": [{
+        "type": "INTEGER",
+        "name": "volume",
+        "required": false,
+        "description": "The volume level as a percentage (eg 50%)"
+    }]
+}
