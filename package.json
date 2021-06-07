@@ -2,7 +2,7 @@
     "name": "floorbot-music",
     "version": "1.0.0",
     "description": "The music component of floorbot",
-    "main": "src/app.js",
+    "main": "src/index.js",
     "scripts": {
         "test": "nodemon --ignore \"*.json\" app.js",
         "start": "node src/app.js"
