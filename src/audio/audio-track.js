@@ -26,8 +26,8 @@ module.exports = class AudioTrack {
                 track.duration = track.metadata.duration ?? null;
                 track.live = track.metadata.is_live ?? null;
 
-                this.viewCount = metadata.view_count ?? null;
-                this.releaseDate = metadata.release_date ?? null; //20200525
+                this.viewCount = track.metadata.view_count ?? null;
+                this.releaseDate = track.metadata.release_date ?? null; //20200525
             }
             return track;
         });
