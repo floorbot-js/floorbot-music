@@ -15,6 +15,6 @@ module.exports = class Leave extends Music {
     async generateResponse(interaction) {
         const voiceChannel = interaction.guild.me.voice.channel;
         if (voiceChannel) voiceChannel.leave();
-        return this.getMediaResponse(interaction, `Left ${voiceChannel} voice channel`);
+        return this.getMediaResponse(interaction, `Left voice channel ${voiceChannel}`);
     }
 }

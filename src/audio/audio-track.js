@@ -10,6 +10,9 @@ module.exports = class AudioTrack {
         this.thumbnail = metadata.thumbnail || null;
         this.duration = metadata.duration ?? null;
         this.live = metadata.is_live ?? null;
+
+        this.viewCount = metadata.view_count ?? null;
+        this.releaseDate = metadata.release_date ?? null; //20200525
     }
 
     static update(track) {
@@ -22,6 +25,9 @@ module.exports = class AudioTrack {
                 track.thumbnail = track.metadata.thumbnail || null;
                 track.duration = track.metadata.duration ?? null;
                 track.live = track.metadata.is_live ?? null;
+
+                this.viewCount = metadata.view_count ?? null;
+                this.releaseDate = metadata.release_date ?? null; //20200525
             }
             return track;
         });

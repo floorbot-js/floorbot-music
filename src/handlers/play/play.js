@@ -39,14 +39,14 @@ module.exports = class Play extends Music {
         return AudioTrack.generate(url, { shuffle }).then(tracks => {
             const userVoiceChannel = interaction.member.voice.channel
             if (!interaction.guild.me.voice.connection && userVoiceChannel && userVoiceChannel.joinable) userVoiceChannel.join();
-            if (!tracks.length) return this.getMediaResponse(interaction, `Could not find any tracks for "${url}"`);
+            if (!tracks.length) return this.getMediaResponse(interaction, `Could not find any tracks for: ${url}`);
             if (method === 'now') interaction.guild.audioPlayer.now(tracks);
             if (method === 'queue') interaction.guild.audioPlayer.queue(tracks);
             if (method === 'next') interaction.guild.audioPlayer.next(tracks);
             return this.getMediaResponse(interaction, (`${tracks.length > 1 ? `Playlist (${tracks.length} tracks)` : 'Track'} added to queue\n${url}`));
         }).catch(error => {
             const info = /(?:ERROR: )([^\.\n\r]+)/gi.exec(error)?. [1] || null;
-            if (info) return this.getMediaResponse(interaction, info);
+            if (info) return this.getMediaResponse(interaction, `Sorry! I'm not sure how to handle this error:\n\`${info}\``);
             throw error;
         });
     }

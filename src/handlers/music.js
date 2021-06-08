@@ -30,22 +30,28 @@ module.exports = class Music extends Mixin(Command, Component) {
             (audioPlayer.tracks.preceding.length ? AudioTrack.update(audioPlayer.tracks.preceding[audioPlayer.tracks.preceding.length - 1]) : null)
         ]).then(res => {
             if (res[0].reason) throw res[0].reason;
-            const track = res[0].value;
+            const track = res[0].value || null;
             const nextTrack = res[1].value || null;
             const precedingTrack = res[2].value || null;
 
             const embed = this.getEmbedTemplate(interaction)
                 .setImage('https://cdn.discordapp.com/attachments/645895035321319454/653541940205191198/blank.png')
                 .setDescription(track ? (
-                    `Duration: **${track.live ? '*live*' : DHMS.print(track.duration * 1000, { limit: 2 })}**`
+                    `Duration: **${track.live ? '*live*' : DHMS.print(track.duration * 1000, { limit: 2 })}**\n` +
+                    `View Count: **${track.viewCount ?? '*unknown*'}**\n` +
+                    `Release Date: **${track.releaseDate ?? '*unknown*'}**\n`
                 ) : 'Pelase use one of the following commands:\n\`/play now [url]\`\n\`/play queue [url]\`\n\`/play next [url]\`')
                 .addField('Previous Track', precedingTrack ? (
                     `**[${Util.splitMessage(precedingTrack.title, {char: '', maxLength: 25, append: '...'})[0]}](${precedingTrack.url})**\n` +
-                    `Duration: **${track.live ? '*live*' : DHMS.print(precedingTrack.duration * 1000, { limit: 2 })}**\n`
+                    `Duration: **${precedingTrack.live ? '*live*' : DHMS.print(precedingTrack.duration * 1000, { limit: 2 })}**\n` +
+                    `View Count: **${precedingTrack.viewCount ?? '*unknown*'}**\n` +
+                    `Release Date: **${precedingTrack.releaseDate ?? '*unknown*'}**\n`
                 ) : '*Nothing to show*', true)
                 .addField('Next Track', nextTrack ? (
                     `**[${Util.splitMessage(nextTrack.title, {char: '', maxLength: 25, append: '...'})[0]}](${nextTrack.url})**\n` +
-                    `Duration: **${track.live ? '*live*' : DHMS.print(nextTrack.duration * 1000, { limit: 2 })}**\n`
+                    `Duration: **${nextTrack.live ? '*live*' : DHMS.print(nextTrack.duration * 1000, { limit: 2 })}**\n` +
+                    `View Count: **${nextTrack.viewCount ?? '*unknown*'}**\n` +
+                    `Release Date: **${nextTrack.releaseDate ?? '*unknown*'}**\n`
                 ) : '*Nothing to show*', true);
             if (!track) embed.setAuthor('No track currently playing');
             if (track) embed.setAuthor(track.title, track.thumbnail, track.url);
@@ -73,5 +79,11 @@ module.exports = class Music extends Mixin(Command, Component) {
             const messageEmbed = this.getEmbedTemplate(interaction).setDescription(messageText);
             return { embed: embed, embeds: [embed, messageEmbed], components: actionRows }
         });
+    }
+
+    getEmbedTemplate(interaction, data) {
+        const { user, member } = interaction;
+        return super.getEmbedTemplate(interaction, data)
+            .setFooter(member.displayName || user.username, user.displayAvatarURL());
     }
 }
