@@ -9,6 +9,7 @@ module.exports = Discord => {
 
             replaceMediaMessage(message) {
                 if (this.mediaMessage) this.mediaMessage.delete().catch(console.log);
+                this.guild.mediaMessage = message;
                 this.mediaMessage = message;
             }
         }

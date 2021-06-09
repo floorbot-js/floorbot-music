@@ -88,6 +88,12 @@ class AudioPlayer {
         return skipped;
     }
 
+    /**
+     * unskip - The same as skip but not
+     *
+     * @param {Integer} count The number of tracks to unskip
+     * @return {Array[AudioTrack]} The tracks unskipped
+     */
     unskip(count = -1) {
         if (count > 0) return this.skip(count);
         const unskipped = this.tracks.preceding.splice(count, -count);
@@ -96,6 +102,11 @@ class AudioPlayer {
         return unskipped;
     }
 
+    /**
+     * togglePause - toggles whether the audio player is paused or not
+     *
+     * @return {Void} Returns void
+     */
     togglePause() {
         this.paused = !this.paused;
         const dispatcher = this.guild.me.voice?.connection?.dispatcher;
@@ -103,6 +114,11 @@ class AudioPlayer {
         if (dispatcher && this.paused) dispatcher.pause();
     }
 
+    /**
+     * shuffleQueue - Shuffles the current queue
+     *
+     * @return {Void} Returns void
+     */
     shuffleQueue() {
         const array = this.tracks.queue;
         for (let i = array.length - 1; i > 0; i--) {
@@ -123,6 +139,7 @@ class AudioPlayer {
         const playingTrack = this.tracks.queue[0];
         const stderr = [];
         const args = ['--no-cache-dir', '--no-playlist', '--no-warnings', '--no-part', '--quiet', '--audio-quality', '0', '--output', '-'];
+        this.client.emit('audio-start', this, playingTrack);
         const downloader = YoutubeDL.spawn(playingTrack.url, args);
         const dispatcher = this.guild.me.voice.connection.play(downloader.stdout); // THIS **SHOULD** KILL THE CURRENT DISPACTHER
 
@@ -131,11 +148,11 @@ class AudioPlayer {
 
         dispatcher.setVolume(this.volume / 100 * AudioPlayer.volumeScale);
         dispatcher.on('finish', reason => {
-            this.client.emit('log', '[audio-player] dispatcher finished');
             if (!downloader.killed) downloader.kill(2); // Livestreams would go on forever...
             if (playingTrack !== this.tracks.queue[0]) return this.client.emit('log', '[audio-player] dispatcher finished <not cycling tracks>');
             if (this.tracks.queue.length) this.tracks.preceding.push(this.tracks.queue.shift());
             this.client.emit('log', '[audio-player] dispatcher finished <cycling tracks>');
+            this.client.emit('audio-cycle', this, playingTrack);
             return this._play();
         });
     }

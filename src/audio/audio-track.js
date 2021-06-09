@@ -13,6 +13,8 @@ module.exports = class AudioTrack {
 
         this.viewCount = metadata.view_count ?? null;
         this.releaseDate = metadata.release_date ?? null; //20200525
+        this.likeCount = metadata.like_count ?? null;
+        this.extractorKey = metadata.extractor_key ?? null;
     }
 
     static update(track) {
@@ -26,8 +28,10 @@ module.exports = class AudioTrack {
                 track.duration = track.metadata.duration ?? null;
                 track.live = track.metadata.is_live ?? null;
 
-                this.viewCount = track.metadata.view_count ?? null;
-                this.releaseDate = track.metadata.release_date ?? null; //20200525
+                track.viewCount = track.metadata.view_count ?? null;
+                track.releaseDate = track.metadata.release_date ?? null; //20200525
+                track.likeCount = track.metadata.like_count ?? null;
+                track.extractorKey = track.metadata.extractor_key ?? null;
             }
             return track;
         });

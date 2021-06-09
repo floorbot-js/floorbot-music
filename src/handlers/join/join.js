@@ -19,7 +19,7 @@ module.exports = class Join extends Music {
         if (voiceChannel.type !== 'voice') return this.getMediaResponse(interaction, `Sorry! ${channel} is not a voice channel`)
         if (!voiceChannel.joinable) return this.getMediaResponse(interaction, `Sorry! I can't seem to join ${channel}. Please check my permissions and the channel settings`)
         return voiceChannel.join().then(connection => {
-            return this.getMediaResponse(interaction, `Joined voice channel ${voiceChannel}!`)
+            return this.getMediaResponse(interaction, `Joined voice channel ${voiceChannel}`)
         });
     }
 }

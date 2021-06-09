@@ -7,6 +7,7 @@ module.exports = Discord => {
             constructor(client, data) {
                 super(client, data);
                 this.audioPlayer = new AudioPlayer(this);
+                this.mediaMessage = null;
             }
         }
     });
